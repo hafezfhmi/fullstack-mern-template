@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3001/cats";
+const baseUrl = "http://localhost:3001/api/cats";
 
 const getAll = () => {
   return axios.get(baseUrl).then((response) => response.data);
