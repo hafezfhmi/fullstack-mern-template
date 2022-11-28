@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 
+const db = require("./utils/database");
+
 const app = express();
 
 const cats = [
@@ -23,5 +25,5 @@ app.get("/api/cats", (req, res) => {
 
 const PORT = 3001;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${{ PORT }}`);
+  console.log(`Server is running on port ${PORT}`);
 });

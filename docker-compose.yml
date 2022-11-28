@@ -5,8 +5,10 @@ services:
   db:
     image: mysql:8.0.30
     restart: always
-    volumes: 
+    volumes:
       - mysql:/var/lib/mysql
+    ports:
+      - 3307:3306
     secrets:
       - db_root_password
       - db_password
