@@ -6,7 +6,7 @@ const db = require("./utils/database");
 
 const app = express();
 
-// middleware
+// Middleware
 app.use(cors());
 app.use(express.json());
 
