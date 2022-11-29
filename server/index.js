@@ -1,29 +1,28 @@
 const express = require("express");
 const cors = require("cors");
 
+const usersRouter = require("./routes/users");
 const db = require("./utils/database");
 
 const app = express();
 
-const cats = [
-  { id: 1, name: "coco" },
-  { id: 2, name: "milo" },
-  { id: 3, name: "snowy" },
-  { id: 4, name: "meowy" },
-  { id: 5, name: "jojo" },
-];
-
+// middleware
 app.use(cors());
+app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("<h1>Hello World</h1>");
-});
-
-app.get("/api/cats", (req, res) => {
-  res.json(cats);
-});
+// Routes
+app.use("/api/user", usersRouter);
 
 const PORT = 3001;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+
+db.sync()
+  .then(() => {
+    console.log("Database synced");
+
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error(err);
+  });
