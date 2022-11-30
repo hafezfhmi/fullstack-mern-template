@@ -20,11 +20,20 @@ function App() {
     console.log(user);
   };
 
+  let handleLogout = async (event) => {
+    event.preventDefault();
+
+    await authServices.logout();
+  };
+
   return (
     <div>
       <form onSubmit={handleLogin}>
         <button>Login</button>
       </form>
+
+      <button onClick={handleLogout}>Logout</button>
+
       <CatForm setCats={setCats} />
       <CatList cats={cats} />
     </div>

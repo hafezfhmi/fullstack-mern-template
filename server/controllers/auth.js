@@ -12,3 +12,13 @@ exports.postLogin = (req, res, next) => {
     next(error);
   }
 };
+
+exports.postLogout = async (req, res, next) => {
+  try {
+    req.session.destroy(() => {
+      res.end();
+    });
+  } catch (error) {
+    next(error);
+  }
+};
