@@ -9,7 +9,7 @@ exports.postLogin = async (req, res, next) => {
     const dbUser = await User.findOne({ where: { email } });
 
     const passwordCorrect =
-      dbUser == null ? false : bcrypt.compare(password, dbUser.password);
+      dbUser == null ? false : await bcrypt.compare(password, dbUser.password);
 
     if (!passwordCorrect) {
       return res.status("401").json({ error: "Invalid username or password" });
