@@ -2,9 +2,9 @@ import axios from "axios";
 
 const baseUrl = "http://localhost:3001/auth";
 
-const login = () => {
+const login = (email, password) => {
   return axios
-    .post(`${baseUrl}/login`, {}, { withCredentials: true })
+    .post(`${baseUrl}/login`, { email, password }, { withCredentials: true })
     .then((response) => response.data);
 };
 

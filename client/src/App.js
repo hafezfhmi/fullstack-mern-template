@@ -4,6 +4,7 @@ import authServices from "./services/auth";
 import CatList from "./components/CatList";
 import CatForm from "./components/CatForm";
 import SignupForm from "./components/SignupForm";
+import LoginForm from "./components/LoginForm";
 
 function App() {
   const [cats, setCats] = useState([]);
@@ -11,15 +12,6 @@ function App() {
   useEffect(() => {
     catsServices.getAll().then((data) => setCats(data));
   }, []);
-
-  // TODO: TEST SESSION
-  let handleLogin = async (event) => {
-    event.preventDefault();
-
-    let user = await authServices.login();
-
-    console.log(user);
-  };
 
   let handleLogout = async (event) => {
     event.preventDefault();
@@ -29,10 +21,7 @@ function App() {
 
   return (
     <div>
-      <form onSubmit={handleLogin}>
-        <button>Login</button>
-      </form>
-
+      <LoginForm />
       <button onClick={handleLogout}>Logout</button>
 
       <CatForm setCats={setCats} />
