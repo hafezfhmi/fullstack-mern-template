@@ -2,16 +2,35 @@ const bcrypt = require("bcrypt");
 
 const User = require("../models/users");
 
-exports.postLogin = (req, res, next) => {
+exports.postLogin = async (req, res, next) => {
+  const { email, password } = req.body;
+
   try {
-    // get user
-    // check user.password and req.password
-    // if true
-    // set req.session.isLoggedIn = true
-    // send user data
-    // else return error
+    const dbUser = await User.findOne({ where: { email } });
+
+    const passwordCorrect =
+      dbUser == null ? false : bcrypt.compare(password, dbUser.password);
+
+    if (!passwordCorrect) {
+      return res.status("401").json({ error: "Invalid username or password" });
+    }
+
     req.session.isLoggedIn = true;
-    res.json({ username: "johndoe" });
+    req.session.user = {
+      username: dbUser.username,
+      firstName: dbUser.firstName,
+      lastName: dbUser.lastName,
+      email: dbUser.email,
+    };
+
+    res.json({
+      user: {
+        username: dbUser.username,
+        firstName: dbUser.firstName,
+        lastName: dbUser.lastName,
+        email: dbUser.email,
+      },
+    });
   } catch (error) {
     next(error);
   }
