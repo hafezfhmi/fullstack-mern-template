@@ -12,7 +12,7 @@ exports.postLogin = async (req, res, next) => {
       dbUser == null ? false : await bcrypt.compare(password, dbUser.password);
 
     if (!passwordCorrect) {
-      return res.status("401").json({ error: "Invalid username or password" });
+      return res.status(401).json({ error: "Invalid username or password" });
     }
 
     req.session.isLoggedIn = true;
@@ -52,7 +52,7 @@ exports.postSignup = async (req, res, next) => {
 
   // Check password
   if (password !== confirmPassword) {
-    return res.status("401").json({ error: "Password doesn't match" });
+    return res.status(401).json({ error: "Password doesn't match" });
   }
 
   try {
@@ -60,7 +60,7 @@ exports.postSignup = async (req, res, next) => {
     let foundUser = await User.findOne({ where: { email } });
     if (foundUser) {
       return res
-        .status("401")
+        .status(401)
         .json({ error: "There's already a user with that email" });
     }
 
@@ -68,13 +68,13 @@ exports.postSignup = async (req, res, next) => {
     foundUser = await User.findOne({ where: { username } });
     if (foundUser) {
       return res
-        .status("401")
+        .status(401)
         .json({ error: "There's already a user with that username" });
     }
 
     // Check if username is valid
     if (!/^[a-zA-Z0-9]+$/.test(username)) {
-      return res.status("401").json({
+      return res.status(401).json({
         error:
           "Invalid username. Username must contains only alphabetical characters and numbers",
       });
@@ -91,7 +91,7 @@ exports.postSignup = async (req, res, next) => {
       password: hashedPassword,
     });
 
-    return res.status("201").json({ success: "User created" });
+    return res.status(201).json({ success: "User created" });
   } catch (error) {
     return next(error);
   }
