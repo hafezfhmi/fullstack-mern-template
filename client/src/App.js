@@ -3,6 +3,7 @@ import catsServices from "./services/cats";
 import authServices from "./services/auth";
 import CatList from "./components/CatList";
 import CatForm from "./components/CatForm";
+import SignupForm from "./components/SignupForm";
 
 function App() {
   const [cats, setCats] = useState([]);
@@ -36,6 +37,7 @@ function App() {
 
       <CatForm setCats={setCats} />
       <CatList cats={cats} />
+      <SignupForm />
     </div>
   );
 }
