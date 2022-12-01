@@ -23,7 +23,7 @@ exports.postLogin = async (req, res, next) => {
       email: dbUser.email,
     };
 
-    res.json({
+    return res.json({
       user: {
         username: dbUser.username,
         firstName: dbUser.firstName,
@@ -32,7 +32,7 @@ exports.postLogin = async (req, res, next) => {
       },
     });
   } catch (error) {
-    next(error);
+    return next(error);
   }
 };
 
@@ -46,7 +46,6 @@ exports.postLogout = async (req, res, next) => {
   }
 };
 
-// eslint-disable-next-line consistent-return
 exports.postSignup = async (req, res, next) => {
   const { username, firstName, lastName, email, password, confirmPassword } =
     req.body;
@@ -92,8 +91,8 @@ exports.postSignup = async (req, res, next) => {
       password: hashedPassword,
     });
 
-    res.status("201").json({ success: "User created" });
+    return res.status("201").json({ success: "User created" });
   } catch (error) {
-    next(error);
+    return next(error);
   }
 };
