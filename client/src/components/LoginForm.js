@@ -18,7 +18,7 @@ const LoginForm = () => {
     event.preventDefault();
 
     try {
-      login(email.attributes.value, password.attributes.value);
+      await login(email.attributes.value, password.attributes.value);
       handleReset();
     } catch (error) {
       console.error(error);
