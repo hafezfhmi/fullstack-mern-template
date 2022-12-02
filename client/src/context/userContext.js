@@ -25,8 +25,17 @@ export const UserContextProvider = (props) => {
     fetchUserLoginStatus();
   }, []);
 
+  let handleLogout = async (event) => {
+    event.preventDefault();
+
+    await authServices.logout();
+
+    setUser(null);
+    setIsLoggedIn(false);
+  };
+
   return (
-    <UserContext.Provider value={{ user, setUser, isLoggedIn }}>
+    <UserContext.Provider value={{ user, setUser, isLoggedIn, handleLogout }}>
       {props.children}
     </UserContext.Provider>
   );

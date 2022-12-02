@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import catsServices from "./services/cats";
-import authServices from "./services/auth";
 import CatList from "./components/CatList";
 import CatForm from "./components/CatForm";
 import SignupForm from "./components/SignupForm";
@@ -16,18 +15,12 @@ function App() {
     catsServices.getAll().then((data) => setCats(data));
   }, []);
 
-  let handleLogout = async (event) => {
-    event.preventDefault();
-
-    await authServices.logout();
-  };
-
   return (
     <div>
       {userCtx.isLoggedIn ? (
         <div>
           <p>{userCtx.user.username} logged in</p>
-          <button onClick={handleLogout}>Logout</button>
+          <button onClick={userCtx.handleLogout}>Logout</button>
         </div>
       ) : (
         <div>
