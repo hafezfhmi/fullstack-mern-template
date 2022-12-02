@@ -1,11 +1,13 @@
 import React from "react";
 
 import { useField } from "../hooks/index";
-import authServices from "../services/auth";
+import { UseUserContext } from "../context/userContext";
 
 const LoginForm = () => {
   const email = useField("email", "email");
   const password = useField("password", "password");
+
+  const login = UseUserContext().login;
 
   const handleReset = () => {
     email.reset();
@@ -16,13 +18,7 @@ const LoginForm = () => {
     event.preventDefault();
 
     try {
-      let user = await authServices.login(
-        email.attributes.value,
-        password.attributes.value
-      );
-
-      // store user in context
-
+      login(email.attributes.value, password.attributes.value);
       handleReset();
     } catch (error) {
       console.error(error);

@@ -25,6 +25,15 @@ export const UserContextProvider = (props) => {
     fetchUserLoginStatus();
   }, []);
 
+  let login = async (email, password) => {
+    let userLoginStatus = await authServices.login(email, password);
+
+    if (userLoginStatus.isLoggedIn) {
+      setUser(userLoginStatus.user);
+      setIsLoggedIn(userLoginStatus.isLoggedIn);
+    }
+  };
+
   let handleLogout = async (event) => {
     event.preventDefault();
 
@@ -35,7 +44,9 @@ export const UserContextProvider = (props) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, setUser, isLoggedIn, handleLogout }}>
+    <UserContext.Provider
+      value={{ user, setUser, isLoggedIn, login, handleLogout }}
+    >
       {props.children}
     </UserContext.Provider>
   );
