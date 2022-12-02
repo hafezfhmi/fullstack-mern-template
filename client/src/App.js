@@ -30,12 +30,14 @@ function App() {
           <button onClick={handleLogout}>Logout</button>
         </div>
       ) : (
-        <LoginForm />
+        <div>
+          <LoginForm />
+          <SignupForm />
+        </div>
       )}
 
       <CatForm setCats={setCats} />
       <CatList cats={cats} />
-      <SignupForm />
     </div>
   );
 }
