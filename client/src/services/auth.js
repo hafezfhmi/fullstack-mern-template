@@ -32,6 +32,12 @@ const signup = (
     .then((response) => response.data);
 };
 
-const authServices = { login, logout, signup };
+const relog = () => {
+  return axios
+    .get(`${baseUrl}/relog`, { withCredentials: true })
+    .then((response) => response.data);
+};
+
+const authServices = { login, logout, signup, relog };
 
 export default authServices;

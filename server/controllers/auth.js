@@ -30,6 +30,7 @@ exports.postLogin = async (req, res, next) => {
         lastName: dbUser.lastName,
         email: dbUser.email,
       },
+      isLoggedIn: true,
     });
   } catch (error) {
     return next(error);
@@ -95,4 +96,17 @@ exports.postSignup = async (req, res, next) => {
   } catch (error) {
     return next(error);
   }
+};
+
+exports.getRelog = (req, res) => {
+  if (!req.session.isLoggedIn) {
+    return res.json({
+      data: "You aren't logged in. Please log in and try again.",
+      isLoggedIn: false,
+    });
+  }
+  return res.json({
+    user: req.session.user,
+    isLoggedIn: req.session.isLoggedIn,
+  });
 };
