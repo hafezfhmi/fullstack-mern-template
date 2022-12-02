@@ -4,6 +4,7 @@ import CatList from "./components/CatList";
 import CatForm from "./components/CatForm";
 import SignupForm from "./components/SignupForm";
 import LoginForm from "./components/LoginForm";
+import LogoutForm from "./components/LogoutForm";
 import { UseUserContext } from "./context/userContext";
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
       {userCtx.isLoggedIn ? (
         <div>
           <p>{userCtx.user.username} logged in</p>
-          <button onClick={userCtx.handleLogout}>Logout</button>
+          <LogoutForm />
         </div>
       ) : (
         <div>
