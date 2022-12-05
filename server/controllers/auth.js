@@ -1,6 +1,21 @@
+const crypto = require("crypto");
 const bcrypt = require("bcrypt");
+const nodemailer = require("nodemailer");
 
 const User = require("../models/users");
+const PasswordReset = require("../models/passwordResets");
+
+// Setting up transporter using gmail: https://www.youtube.com/watch?v=thAP7Fvrql4
+// P.S. Using gmail is not recommended for production. Find other alternative for production.
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  host: "smtp.gmail.com",
+  secure: false,
+  auth: {
+    user: process.env.GMAIL_EMAIL,
+    pass: process.env.GMAIL_SECRETS,
+  },
+});
 
 exports.postLogin = async (req, res, next) => {
   const { email, password } = req.body;
@@ -110,3 +125,75 @@ exports.getRelog = (req, res) => {
     isLoggedIn: req.session.isLoggedIn,
   });
 };
+
+exports.postResetPassword = async (req, res, next) => {
+  const { email } = req.body;
+
+  try {
+    const user = await User.findOne({ where: { email } });
+
+    if (!user) {
+      return res.status(404).json("User not found");
+    }
+
+    const hashBuffer = crypto.randomBytes(32);
+    const token = hashBuffer.toString("hex");
+
+    const resetToken = await PasswordReset.findOne({
+      where: { userId: user.userId },
+    });
+
+    if (resetToken) {
+      const currentDate = new Date();
+      const resetTokenExpiryLeft = Math.floor(
+        (resetToken.expiry - currentDate) / 60000
+      );
+
+      if (resetTokenExpiryLeft > 0) {
+        return res.status(400).json({
+          error: `You had requested a password reset earlier. Please try again in ${resetTokenExpiryLeft} minutes.`,
+        });
+      }
+      // Update token and return response
+      await PasswordReset.update(
+        {
+          resetToken: token,
+          expiry: Date.now() + 3600000,
+        },
+        { where: { userId: user.userId } }
+      );
+    } else {
+      await PasswordReset.create({
+        resetToken: token,
+        expiry: Date.now() + 3600000,
+        userId: user.userId,
+      });
+    }
+
+    await transporter.sendMail({
+      from: process.env.GMAIL_EMAIL,
+      to: email,
+      subject: "Password reset",
+      text: `Here's your link to reset your password: http://localhost:3000/passwordReset/${token}`,
+    });
+
+    return res
+      .status(201)
+      .json({ message: "Reset link has been sent to your email" });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+// exports.postNewPassword = async (req, res, next) => {
+// try {
+//   await transporter.sendMail({
+//     to: "hafezfahmi2000@gmail.com",
+//     subject: "Password reset",
+//     text: "Hello world?",
+//   });
+//   res.send("success");
+// } catch (error) {
+//   next(error);
+// }
+// };
