@@ -38,6 +38,26 @@ const relog = () => {
     .then((response) => response.data);
 };
 
-const authServices = { login, logout, signup, relog };
+const checkPasswordResetValidity = (resetToken) => {
+  return axios.get(`${baseUrl}/resetPassword/${resetToken}`);
+};
+
+const passwordReset = (resetToken, password, confirmPassword) => {
+  return axios
+    .post(`${baseUrl}/resetPassword/${resetToken}`, {
+      password,
+      confirmPassword,
+    })
+    .then((response) => response.data);
+};
+
+const authServices = {
+  login,
+  logout,
+  signup,
+  relog,
+  checkPasswordResetValidity,
+  passwordReset,
+};
 
 export default authServices;
