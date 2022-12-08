@@ -8,14 +8,3 @@ exports.getAllUsers = async (req, res, next) => {
     next(error);
   }
 };
-
-exports.postAddUsers = async (req, res, next) => {
-  const { username, firstName, lastName } = req.body;
-
-  try {
-    const user = await User.create({ username, firstName, lastName });
-    res.json(user);
-  } catch (error) {
-    next(error);
-  }
-};

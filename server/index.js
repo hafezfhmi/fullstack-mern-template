@@ -1,17 +1,35 @@
+const dotenv = require("dotenv");
+
 const express = require("express");
 const cors = require("cors");
+const session = require("express-session");
+const RedisStore = require("connect-redis")(session);
+const { createClient } = require("redis");
 
+dotenv.config({ path: "./.env" });
 const usersRouter = require("./routes/users");
+const authRouter = require("./routes/auth");
 const db = require("./utils/database");
 
 const app = express();
+const redisClient = createClient({ legacyMode: true });
+redisClient.connect().catch(console.error);
 
 // Middleware
-app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
+app.use(
+  session({
+    store: new RedisStore({ client: redisClient }),
+    secret: "cat",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 // Routes
 app.use("/api/user", usersRouter);
+app.use("/auth", authRouter);
 
 const PORT = 3001;
 

@@ -1,7 +1,7 @@
-import { Sequelize, Model, DataTypes } from "sequelize";
+// import { Sequelize, Model, DataTypes } from "sequelize";
 
-const sequelize = new Sequelize("sqlite::memory:");
-const User = sequelize.define("User", {
-  username: DataTypes.STRING,
-  birthday: DataTypes.DATE,
-});
+// const sequelize = new Sequelize("sqlite::memory:");
+// const User = sequelize.define("User", {
+//   username: DataTypes.STRING,
+//   birthday: DataTypes.DATE,
+// });
