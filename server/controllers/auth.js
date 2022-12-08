@@ -1,6 +1,7 @@
 const crypto = require("crypto");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
+const { Op } = require("sequelize");
 
 const User = require("../models/users");
 const PasswordReset = require("../models/passwordResets");
@@ -185,15 +186,74 @@ exports.postResetPassword = async (req, res, next) => {
   }
 };
 
-// exports.postNewPassword = async (req, res, next) => {
-// try {
-//   await transporter.sendMail({
-//     to: "hafezfahmi2000@gmail.com",
-//     subject: "Password reset",
-//     text: "Hello world?",
-//   });
-//   res.send("success");
-// } catch (error) {
-//   next(error);
-// }
-// };
+exports.getOneResetPassword = async (req, res, next) => {
+  const { resetToken } = req.params;
+
+  try {
+    const resetTokenDetails = await PasswordReset.findOne({
+      where: {
+        resetToken,
+        expiry: {
+          [Op.gt]: new Date(),
+        },
+      },
+    });
+
+    if (!resetTokenDetails) {
+      return res.status(401).json({ error: "Invalid token" });
+    }
+
+    return res.status(200).json({ success: "Token valid" });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+exports.postNewPassword = async (req, res, next) => {
+  const { resetToken } = req.params;
+  const { password, confirmPassword } = req.body;
+
+  try {
+    const resetTokenDetails = await PasswordReset.findOne({
+      where: {
+        resetToken,
+        expiry: {
+          [Op.gt]: new Date(),
+        },
+      },
+    });
+
+    if (!resetTokenDetails) {
+      return res.status(401).json({ error: "Invalid token" });
+    }
+
+    // Check password
+    if (password !== confirmPassword) {
+      return res.status(401).json({ error: "Password doesn't match" });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 12);
+
+    // TODO: Transaction update and delete below
+    await User.update(
+      {
+        password: hashedPassword,
+      },
+      {
+        where: {
+          userId: resetTokenDetails.userId,
+        },
+      }
+    );
+
+    await PasswordReset.destroy({
+      where: {
+        resetToken,
+      },
+    });
+
+    return res.status(201).json({ success: "Password updated" });
+  } catch (error) {
+    return next(error);
+  }
+};
