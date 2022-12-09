@@ -6,7 +6,7 @@ const CatList = ({ cats }) => {
       <h1>CatList</h1>
       <ul>
         {cats.map((cat) => (
-          <li key={cat.userId}>{cat.username}</li>
+          <li key={cat.catId}>{cat.catName}</li>
         ))}
       </ul>
     </div>
