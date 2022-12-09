@@ -1,25 +1,43 @@
-import React, { useState } from "react";
+import React from "react";
 import catsService from "../services/cats";
+import { useField } from "../hooks/index";
 
 const CatForm = ({ setCats }) => {
-  const [name, setName] = useState("");
+  const catName = useField("text", "catName");
+  const catImgUrl = useField("text", "catImgUrl");
 
-  const getName = (event) => {
-    setName(event.target.value);
+  const handleReset = () => {
+    catName.reset();
+    catImgUrl.reset();
   };
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    catsService.create({ name }).then((data) => {
+
+    try {
+      let data = await catsService.create({
+        catName: catName.attributes.value,
+        catImgUrl: catImgUrl.attributes.value,
+      });
+
       setCats((prevCats) => prevCats.concat(data));
-    });
-    setName("");
+
+      handleReset();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <label htmlFor="catName">Cat Name: </label>
-      <input type="text" id="catName" onChange={getName} value={name} />
+      <div>
+        <label htmlFor="catName">Cat Name: </label>
+        <input {...catName.attributes} />
+      </div>
+      <div>
+        <label htmlFor="catImgUrl">Cat Image Url: </label>
+        <input {...catImgUrl.attributes} />
+      </div>
       <button>Submit</button>
     </form>
   );
