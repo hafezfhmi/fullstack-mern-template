@@ -33,6 +33,7 @@ exports.postLogin = async (req, res, next) => {
 
     req.session.isLoggedIn = true;
     req.session.user = {
+      userId: dbUser.userId,
       username: dbUser.username,
       firstName: dbUser.firstName,
       lastName: dbUser.lastName,
