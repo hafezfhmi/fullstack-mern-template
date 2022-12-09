@@ -8,6 +8,7 @@ const { createClient } = require("redis");
 
 dotenv.config({ path: "./.env" });
 const usersRouter = require("./routes/users");
+const catsRouter = require("./routes/cats");
 const authRouter = require("./routes/auth");
 const db = require("./utils/database");
 
@@ -29,6 +30,7 @@ app.use(
 
 // Routes
 app.use("/api/user", usersRouter);
+app.use("/api/cat", catsRouter);
 app.use("/auth", authRouter);
 
 const PORT = 3001;
