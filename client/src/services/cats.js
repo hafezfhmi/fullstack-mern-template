@@ -11,7 +11,9 @@ const get = (id) => {
 };
 
 const create = (data) => {
-  return axios.post(baseUrl, data).then((response) => response.data);
+  return axios
+    .post(baseUrl, data, { withCredentials: true })
+    .then((response) => response.data);
 };
 
 const update = (id, updatedData) => {
