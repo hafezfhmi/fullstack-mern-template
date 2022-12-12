@@ -6,17 +6,20 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
+import "./styles/reset.css";
+import "./styles/global.css";
 import PasswordReset from "./routes/PasswordReset";
 import App from "./App";
 
 import { UserContextProvider } from "./context/userContext";
+import Root from "./routes/Root";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <>
-      <Route path="/" element={<App />} />
-      <Route path="/passwordReset/:tokenId" element={<PasswordReset />} />
-    </>
+    <Route path="/" element={<Root />}>
+      <Route index element={<App />} />
+      <Route path="passwordReset/:tokenId" element={<PasswordReset />} />
+    </Route>
   )
 );
 

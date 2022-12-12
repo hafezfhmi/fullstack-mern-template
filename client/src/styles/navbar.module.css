@@ -1,0 +1,53 @@
+.navbar {
+  height: 64px;
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.797);
+  backdrop-filter: blur(10px);
+}
+
+.scrolled {
+  box-shadow: 0 0.0625rem 0.625rem 0 rgb(0 0 0 / 20%);
+}
+
+.wrapper {
+  height: inherit;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.wrapper > img {
+  height: 100%;
+}
+
+.wrapper > div {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.wrapper > div > span {
+  display: block;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+  margin-left: auto;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.nav :last-child {
+  background-color: rgb(39, 123, 234);
+  border-radius: 0.6rem;
+  padding: 0.6rem 1rem;
+  color: #fff;
+}
+
+@media only screen and (max-width: 900px) {
+  .nav {
+    display: none;
+  }
+}
