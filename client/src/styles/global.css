@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&display=swap");
+/* font-family: 'Mukta', sans-serif; */
+
+/* font size */
+html {
+  font-size: 100%; /* 16px */
+}
+
+body {
+  font-family: "Mukta", sans-serif;
+}
+
+@media only screen and (max-width: 900px) {
+  html {
+    font-size: 81.25%; /* 13px */
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  html {
+    font-size: 87.5%; /* 14px */
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  html {
+    font-size: 118.75%; /* 19px */
+  }
+}
