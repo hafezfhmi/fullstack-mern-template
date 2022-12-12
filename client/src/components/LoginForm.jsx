@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import styles from "../styles/loginForm.module.css";
 
 import { useField } from "../hooks/index";
@@ -35,6 +35,12 @@ const LoginForm = () => {
         <input {...password.attributes} />
       </div>
       <button type="submit">Login</button>
+      <div>
+        <Link to={"/forgot-password"}>Forgot Password</Link>
+        <p>
+          Have an account? <Link to={"/signup"}>Sign up</Link>
+        </p>
+      </div>
     </form>
   );
 };

@@ -42,6 +42,7 @@
   margin-top: 1.2rem;
   border: none;
   border-radius: 0.6rem;
+  font-size: 1.2rem;
   color: #fff;
   background-color: rgb(39, 123, 234);
   cursor: pointer;
@@ -49,4 +50,14 @@
 
 .loginForm > button:hover {
   background-color: rgb(32, 104, 199);
+}
+
+.loginForm > div:last-child {
+  display: flex;
+  flex-direction: row !important;
+  column-gap: 2rem;
+}
+
+.loginForm a {
+  color: rgb(39, 123, 234);
 }
