@@ -13,13 +13,17 @@ import App from "./App";
 
 import { UserContextProvider } from "./context/userContext";
 import Root from "./routes/Root";
+import Login from "./routes/Login";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Root />}>
-      <Route index element={<App />} />
-      <Route path="passwordReset/:tokenId" element={<PasswordReset />} />
-    </Route>
+    <>
+      <Route path="/" element={<Root />}>
+        <Route index element={<App />} />
+        <Route path="passwordReset/:tokenId" element={<PasswordReset />} />
+        <Route path="login" element={<Login />} />
+      </Route>
+    </>
   )
 );
 

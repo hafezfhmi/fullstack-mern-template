@@ -1,32 +1,31 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import styles from "../styles/loginForm.module.css";
 
 import { useField } from "../hooks/index";
 import { UseUserContext } from "../context/userContext";
 
 const LoginForm = () => {
+  const navigate = useNavigate();
   const email = useField("email", "email");
   const password = useField("password", "password");
 
   const login = UseUserContext().login;
-
-  const handleReset = () => {
-    email.reset();
-    password.reset();
-  };
 
   let handleLogin = async (event) => {
     event.preventDefault();
 
     try {
       await login(email.attributes.value, password.attributes.value);
-      handleReset();
+      navigate("/");
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <form onSubmit={handleLogin}>
+    <form className={styles.loginForm} onSubmit={handleLogin}>
+      <h1>Log in</h1>
       <div>
         <label htmlFor="email">Email: </label>
         <input {...email.attributes} />
