@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
-import styles from "../styles/signupForm.module.css";
+import styles from "../styles/authForm.module.css";
 
 import { useField } from "../hooks/index";
 import authServices from "../services/auth";
@@ -33,36 +33,36 @@ const SignupForm = () => {
   };
 
   return (
-    <form className={styles.signupForm} onSubmit={handleSignup}>
+    <form className={styles.authForm} onSubmit={handleSignup}>
       <h1>Sign up</h1>
       <div className={styles.nameWrapper}>
-        <div>
+        <div className={styles.inputWrapper}>
           <label htmlFor="firstName">First name: </label>
           <input {...firstName.attributes} />
         </div>
-        <div>
+        <div className={styles.inputWrapper}>
           <label htmlFor="lastName">Last name: </label>
           <input {...lastName.attributes} />
         </div>
       </div>
-      <div>
+      <div className={styles.inputWrapper}>
         <label htmlFor="username">Username: </label>
         <input {...username.attributes} />
       </div>
-      <div>
+      <div className={styles.inputWrapper}>
         <label htmlFor="email">Email: </label>
         <input {...email.attributes} />
       </div>
-      <div>
+      <div className={styles.inputWrapper}>
         <label htmlFor="password">Password: </label>
         <input {...password.attributes} />
       </div>
-      <div>
+      <div className={styles.inputWrapper}>
         <label htmlFor="confirmPassword">Confirm password: </label>
         <input {...confirmPassword.attributes} />
       </div>
       <button type="submit">Sign up</button>
-      <div>
+      <div className={styles.extraWrapper}>
         <p>
           Have an account? <Link to={"/login"}>Log in</Link>
         </p>
