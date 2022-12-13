@@ -21,8 +21,8 @@ const LoginForm = () => {
     try {
       await login(email.attributes.value, password.attributes.value);
       navigate("/");
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      error.handleError(true, err.message);
     }
   };
 
