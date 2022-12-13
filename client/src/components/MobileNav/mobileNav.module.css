@@ -18,13 +18,6 @@
   transition: all 0.4s;
 }
 
-.mobileNav :last-child {
-  background-color: rgb(39, 123, 234);
-  border-radius: 0.6rem;
-  padding: 0.6rem 1rem;
-  color: #fff;
-}
-
 .burgerButton {
   display: none;
   margin-left: auto;

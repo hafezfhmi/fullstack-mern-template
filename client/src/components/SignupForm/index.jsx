@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
-import styles from "./authForm.module.css";
+import Button from "../Button";
+import styles from "./signupForm.module.css";
 
 import { useField } from "../../hooks/index";
 import authServices from "../../services/auth";
@@ -61,7 +62,10 @@ const SignupForm = () => {
         <label htmlFor="confirmPassword">Confirm password: </label>
         <input {...confirmPassword.attributes} />
       </div>
-      <button type="submit">Sign up</button>
+      <Button
+        label="Sign up"
+        style={{ "margin-top": "1.2rem", width: "100%" }}
+      />
       <div className={styles.extraWrapper}>
         <p>
           Have an account? <Link to={"/login"}>Log in</Link>

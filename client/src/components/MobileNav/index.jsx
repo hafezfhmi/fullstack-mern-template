@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
+import Button from "../Button";
 import styles from "./mobileNav.module.css";
 
 const MobileNav = () => {
@@ -19,7 +20,7 @@ const MobileNav = () => {
         <li>Home</li>
         <li>Gallery</li>
         <li>Log in</li>
-        <li>Sign up</li>
+        <Button to={"signup"} label="Sign up" />
       </ul>
 
       <AiOutlineMenu

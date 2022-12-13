@@ -45,15 +45,6 @@
   font-weight: 500;
 }
 
-.button {
-  padding: 0.6rem 1rem;
-  border: none;
-  border-radius: 0.6rem;
-  color: #fff;
-  background-color: rgb(39, 123, 234);
-  cursor: pointer;
-}
-
 @media only screen and (max-width: 900px) {
   .nav {
     display: none;

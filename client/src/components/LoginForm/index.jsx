@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
-import styles from "./authForm.module.css";
+import Button from "../Button";
+import styles from "./loginForm.module.css";
 
 import { useField } from "../../hooks/index";
 import { UseUserContext } from "../../context/userContext";
@@ -24,7 +25,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form className={styles.authForm} onSubmit={handleLogin}>
+    <form className={styles.loginForm} onSubmit={handleLogin}>
       <h1>Log in</h1>
       <div className={styles.inputWrapper}>
         <label htmlFor="email">Email: </label>
@@ -34,7 +35,10 @@ const LoginForm = () => {
         <label htmlFor="password">Password: </label>
         <input {...password.attributes} />
       </div>
-      <button type="submit">Login</button>
+      <Button
+        label="Log in"
+        style={{ "margin-top": "1.2rem", width: "100%" }}
+      />
       <div className={styles.extraWrapper}>
         <Link to={"/forgot-password"}>Forgot Password</Link>
         <p>

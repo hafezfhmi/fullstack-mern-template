@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import MobileNav from "../MobileNav";
+import Button from "../Button";
 import styles from "./navbar.module.css";
 import catLogo from "../../assets/cat-logo.gif";
 
@@ -38,9 +39,7 @@ const Navbar = () => {
           <li>
             <Link to={"login"}>Log in</Link>
           </li>
-          <li className={styles.button}>
-            <Link to={"signup"}>Sign up</Link>
-          </li>
+          <Button to={"signup"} label="Sign up" />
         </ul>
 
         <MobileNav />
