@@ -6,7 +6,7 @@ const Button = ({ to, onClick, label, style }) => {
   if (to) {
     return (
       <Link to={to}>
-        <button className={styles.button} style={style}>
+        <button className={styles.button} onClick={onClick} style={style}>
           {label}
         </button>
       </Link>
