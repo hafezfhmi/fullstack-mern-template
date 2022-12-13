@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-import styles from "../styles/mobileNav.module.css";
+import styles from "./mobileNav.module.css";
 
 const MobileNav = () => {
   const [showMobileNav, setShowMobileNav] = useState(false);
