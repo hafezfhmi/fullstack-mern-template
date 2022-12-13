@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import Button from "../Button";
 import styles from "./mobileNav.module.css";
@@ -10,6 +11,10 @@ const MobileNav = () => {
     setShowMobileNav((prevVal) => !prevVal);
   };
 
+  const handleClickNav = () => {
+    setShowMobileNav(false);
+  };
+
   return (
     <>
       <ul
@@ -17,10 +22,22 @@ const MobileNav = () => {
           styles.mobileNav + " " + (showMobileNav ? styles.active : "")
         }
       >
-        <li>Home</li>
-        <li>Gallery</li>
-        <li>Log in</li>
-        <Button to={"signup"} label="Sign up" />
+        <li>
+          <Link to={"/"} onClick={handleClickNav}>
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to={"/"} onClick={handleClickNav}>
+            Gallery
+          </Link>
+        </li>
+        <li>
+          <Link to={"login"} onClick={handleClickNav}>
+            Log in
+          </Link>
+        </li>
+        <Button to={"signup"} label="Sign up" onClick={handleClickNav} />
       </ul>
 
       <AiOutlineMenu
