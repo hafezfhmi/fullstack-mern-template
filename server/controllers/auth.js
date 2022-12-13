@@ -28,7 +28,7 @@ exports.postLogin = async (req, res, next) => {
       dbUser == null ? false : await bcrypt.compare(password, dbUser.password);
 
     if (!passwordCorrect) {
-      return res.status(401).json({ error: "Invalid username or password" });
+      return res.send(401, { error: "Invalid username or password" });
     }
 
     req.session.isLoggedIn = true;

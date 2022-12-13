@@ -22,7 +22,7 @@ const LoginForm = () => {
       await login(email.attributes.value, password.attributes.value);
       navigate("/");
     } catch (err) {
-      error.handleError(true, err.message);
+      error.handleError(true, err.response.data.error);
     }
   };
 
