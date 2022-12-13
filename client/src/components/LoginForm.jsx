@@ -38,7 +38,7 @@ const LoginForm = () => {
       <div>
         <Link to={"/forgot-password"}>Forgot Password</Link>
         <p>
-          Have an account? <Link to={"/signup"}>Sign up</Link>
+          Don't have an account? <Link to={"/signup"}>Sign up</Link>
         </p>
       </div>
     </form>
