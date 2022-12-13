@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import MobileNav from "./MobileNav";
 import styles from "../styles/navbar.module.css";
 import catLogo from "../assets/cat-logo.gif";
@@ -19,16 +21,26 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar + " " + (scrolled ? styles.scrolled : "")}>
       <div className={styles.wrapper}>
-        <img src={catLogo} alt="cat logo" />
-        <div>
-          <span>Meow</span> Gallery
-        </div>
+        <Link to={"/"} className={styles.logoWrapper}>
+          <img src={catLogo} alt="cat logo" />
+          <div>
+            <span>Meow</span> Gallery
+          </div>
+        </Link>
 
         <ul className={styles.nav}>
-          <li>Home</li>
-          <li>Gallery</li>
-          <li>Log in</li>
-          <li>Sign up</li>
+          <li>
+            <Link to={"/"}>Home</Link>
+          </li>
+          <li>
+            <Link to={"/"}>Gallery</Link>
+          </li>
+          <li>
+            <Link to={"login"}>Log in</Link>
+          </li>
+          <li className={styles.button}>
+            <Link to={"signup"}>Sign up</Link>
+          </li>
         </ul>
 
         <MobileNav />
