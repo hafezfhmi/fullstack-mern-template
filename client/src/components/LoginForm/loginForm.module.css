@@ -31,9 +31,4 @@
   .nameWrapper {
     flex-direction: column;
   }
-
-  .extraWrapper > a {
-    flex-basis: 50%;
-    flex-grow: 1;
-  }
 }
