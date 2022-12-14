@@ -2,6 +2,7 @@ import { useState } from "react";
 
 export const useField = (type, id) => {
   const [value, setValue] = useState("");
+  const [error, setError] = useState("");
 
   const onChange = (event) => {
     setValue(event.target.value);
@@ -11,7 +12,17 @@ export const useField = (type, id) => {
     setValue("");
   };
 
-  return { attributes: { type, id, value, onChange }, reset };
+  return {
+    attributes: {
+      type,
+      id,
+      value,
+      onChange,
+    },
+    reset,
+    error,
+    setError,
+  };
 };
 
 export const useError = () => {

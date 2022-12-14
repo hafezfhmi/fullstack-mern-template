@@ -11,37 +11,6 @@
   font-size: 1.8rem;
 }
 
-.nameWrapper {
-  display: flex;
-  flex-direction: row;
-  column-gap: 2rem;
-}
-
-.inputWrapper {
-  margin-top: 1.2rem;
-  display: flex;
-  flex-direction: column;
-  row-gap: 0.6rem;
-}
-
-.inputWrapper > label {
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-.inputWrapper > input {
-  padding: 0.6rem;
-  font-size: 1.2rem;
-  background-color: #fff;
-  border-radius: 0.6rem;
-  border: 2px solid rgba(0, 0, 0, 0.2);
-  outline: none;
-}
-
-.inputWrapper > input:focus {
-  border: 2px solid rgba(0, 0, 0, 0.8);
-}
-
 .extraWrapper {
   display: flex;
   justify-content: space-between;
@@ -63,8 +32,8 @@
     flex-direction: column;
   }
 
-  .extraWrapper > * {
-    flex-basis: 0;
+  .extraWrapper > a {
+    flex-basis: 50%;
     flex-grow: 1;
   }
 }

@@ -1,0 +1,36 @@
+.inputWrapper {
+  margin-top: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.6rem;
+}
+
+.inputWrapper > input {
+  padding: 0.6rem;
+  font-size: 1.2rem;
+  background-color: #fff;
+  border-radius: 0.6rem;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.inputWrapper > input:focus {
+  border: 2px solid rgba(0, 0, 0, 0.8);
+}
+
+.labelWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.labelWrapper > label {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.labelWrapper > p {
+  color: rgb(245, 45, 45);
+  flex-basis: 50%;
+  text-align: end;
+}
