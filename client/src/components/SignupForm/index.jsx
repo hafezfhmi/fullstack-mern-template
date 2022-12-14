@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Button from "../Button";
 import ErrorModal from "../ErrorModal";
+import TextInput from "../TextInput.js";
 import styles from "./signupForm.module.css";
 
 import { useField, useError } from "../../hooks/index";
@@ -17,8 +18,71 @@ const SignupForm = () => {
   const confirmPassword = useField("password", "confirmPassword");
   const error = useError();
 
+  const validate = () => {
+    let firstNameError = "";
+    let lastNameError = "";
+    let usernameError = "";
+    let emailError = "";
+    let passwordError = "";
+    let confirmPasswordError = "";
+
+    if (firstName.attributes.value.length === 0) {
+      firstNameError = "First name is required";
+    }
+
+    if (lastName.attributes.value.length === 0) {
+      lastNameError = "Last name is required";
+    }
+
+    if (username.attributes.value.length === 0) {
+      usernameError = "Username is required";
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.attributes.value)) {
+      emailError = "Invalid email";
+    }
+
+    if (password.attributes.value !== confirmPassword.attributes.value) {
+      confirmPasswordError = "Password should be equal";
+    }
+
+    if (password.attributes.value.length === 0) {
+      passwordError = "Password is required";
+    }
+
+    if (confirmPassword.attributes.value.length === 0) {
+      confirmPasswordError = "Confirm password is required";
+    }
+
+    firstName.setError(firstNameError);
+    lastName.setError(lastNameError);
+    username.setError(usernameError);
+    email.setError(emailError);
+    password.setError(passwordError);
+    confirmPassword.setError(confirmPasswordError);
+
+    if (
+      firstNameError ||
+      lastNameError ||
+      usernameError ||
+      emailError ||
+      passwordError ||
+      confirmPasswordError
+    ) {
+      return false;
+    }
+
+    return true;
+  };
+
   let handleSignup = async (event) => {
     event.preventDefault();
+
+    let formValid = validate();
+
+    if (!formValid) {
+      return;
+    }
 
     try {
       await authServices.signup(
@@ -46,31 +110,14 @@ const SignupForm = () => {
       <form className={styles.authForm} onSubmit={handleSignup}>
         <h1>Sign up</h1>
         <div className={styles.nameWrapper}>
-          <div className={styles.inputWrapper}>
-            <label htmlFor="firstName">First name: </label>
-            <input {...firstName.attributes} />
-          </div>
-          <div className={styles.inputWrapper}>
-            <label htmlFor="lastName">Last name: </label>
-            <input {...lastName.attributes} />
-          </div>
+          <TextInput field={firstName} label="First name" />
+          <TextInput field={lastName} label="Last name" />
         </div>
-        <div className={styles.inputWrapper}>
-          <label htmlFor="username">Username: </label>
-          <input {...username.attributes} />
-        </div>
-        <div className={styles.inputWrapper}>
-          <label htmlFor="email">Email: </label>
-          <input {...email.attributes} />
-        </div>
-        <div className={styles.inputWrapper}>
-          <label htmlFor="password">Password: </label>
-          <input {...password.attributes} />
-        </div>
-        <div className={styles.inputWrapper}>
-          <label htmlFor="confirmPassword">Confirm password: </label>
-          <input {...confirmPassword.attributes} />
-        </div>
+        <TextInput field={username} label="Username" />
+        <TextInput field={email} label="Email" />
+        <TextInput field={password} label="Password" />
+        <TextInput field={confirmPassword} label="Confirm Password" />
+
         <Button
           label="Sign up"
           style={{ "margin-top": "1.2rem", width: "100%" }}
