@@ -1,0 +1,62 @@
+.hero {
+  display: grid;
+  grid-template-columns: 1.5fr 2fr;
+  padding: 2rem 0;
+}
+
+.heroHeadline {
+  padding: 2rem 0;
+}
+
+.heroHeadline > h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1.6rem;
+  position: relative;
+  z-index: -1;
+}
+
+.heroHeadline > h1 > img {
+  position: absolute;
+  width: 4.6rem;
+}
+
+.heroHeadline > p {
+  max-width: 80%;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.4rem;
+  margin-bottom: 1.6rem;
+}
+
+.heroStatsContainer {
+  display: flex;
+  width: 80%;
+  margin-top: 2.2rem;
+}
+
+.heroStatsContainer > div:first-child {
+  padding-right: 2rem;
+}
+
+.heroStatsContainer > div:last-child {
+  padding-left: 2rem;
+}
+
+.heroStatsContainer > div > p > span {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.statsSeparator {
+  width: 0.1rem;
+  background-color: rgb(185, 185, 185);
+}
+
+@media only screen and (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
