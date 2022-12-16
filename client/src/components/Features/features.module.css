@@ -100,7 +100,6 @@
   animation-name: buttonPress;
   animation-duration: 15s;
   animation-iteration-count: infinite;
-  /* display: none; */
 }
 
 .catImageContainer {
@@ -110,33 +109,27 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* display: none; */
-  /* background-color: red; */
 }
 
 .catImageContainer > img {
   position: absolute;
-  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0%);
 }
 
 .catImageContainer > img:nth-child(1) {
-  top: 40%;
   animation-name: uploading-img-1;
   animation-duration: 15s;
   animation-iteration-count: infinite;
 }
 
 .catImageContainer > img:nth-child(2) {
-  top: 50%;
   animation-name: uploading-img-2;
   animation-duration: 15s;
   animation-iteration-count: infinite;
 }
 
 .catImageContainer > img:nth-child(3) {
-  top: 60%;
   animation-name: uploading-img-3;
   animation-duration: 15s;
   animation-iteration-count: infinite;
@@ -180,6 +173,7 @@
   20% {
     opacity: 0;
     top: 115%;
+    transform: translate(-50%, 0%);
   }
   21% {
     opacity: 1;
@@ -190,6 +184,7 @@
   69% {
     opacity: 100%;
     top: 40%;
+    transform: translate(-50%, -50%);
   }
   70% {
     opacity: 0;
@@ -204,6 +199,7 @@
   20% {
     opacity: 0;
     top: 115%;
+    transform: translate(-50%, 0%);
   }
   21% {
     opacity: 1;
@@ -214,6 +210,7 @@
   69% {
     opacity: 100%;
     top: 50%;
+    transform: translate(-50%, -50%);
   }
   70% {
     opacity: 0;
@@ -228,6 +225,7 @@
   20% {
     opacity: 0;
     top: 115%;
+    transform: translate(-50%, 0%);
   }
   21% {
     opacity: 1;
@@ -238,6 +236,7 @@
   69% {
     opacity: 100%;
     top: 60%;
+    transform: translate(-50%, -50%);
   }
   70% {
     opacity: 0;
