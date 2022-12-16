@@ -167,8 +167,40 @@
   fill: #fff;
 }
 
+@media only screen and (max-width: 1200px) {
+  .heroBest {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
+  }
+
+  .heroImg {
+    position: relative;
+  }
+
+  .heroImgBg {
+    right: -2rem;
+    padding: 2rem;
+    width: 100%;
+    height: 12rem;
+    border-radius: 0;
+  }
+
+  .heroImgBg > img {
+    left: 45%;
+    transform: translateX(-50%);
+  }
+
+  .heroReview {
+    left: 50%;
+  }
+
+  .heroBest {
+    display: block;
+    left: 55%;
   }
 }

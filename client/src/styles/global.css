@@ -13,9 +13,9 @@ body {
   margin: 0 auto;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (min-width: 1800px) {
   html {
-    font-size: 81.25%; /* 13px */
+    font-size: 118.75%; /* 19px */
   }
 }
 
@@ -25,9 +25,9 @@ body {
   }
 }
 
-@media only screen and (min-width: 1800px) {
+@media only screen and (max-width: 900px) {
   html {
-    font-size: 118.75%; /* 19px */
+    font-size: 81.25%; /* 13px */
   }
 }
 
