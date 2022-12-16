@@ -1,0 +1,96 @@
+.features {
+  padding: 2rem 0;
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  grid-gap: 2rem;
+  margin: 4rem 0;
+}
+
+/* Form image *might not need later and make justify self for each div element */
+.feature > img {
+  justify-self: center;
+}
+
+.featureTextContainer > h3 {
+  color: rgb(39, 123, 234);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.featureTextContainer > h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.catGrid {
+  width: 25vw;
+  height: 25vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0.8rem;
+  justify-self: center;
+  overflow: hidden;
+  border-radius: 0.6rem;
+}
+
+.catColumnWrapper {
+  position: relative;
+}
+
+.catColumn {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 0.8rem;
+  position: absolute;
+  width: 100%;
+  animation-name: gridMove;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+.animationReverse {
+  animation-name: gridMove2;
+}
+
+.catColumn > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.6rem;
+}
+
+@keyframes gridMove {
+  from {
+    top: 0%;
+  }
+  to {
+    top: -60%;
+  }
+}
+
+@keyframes gridMove2 {
+  from {
+    top: -60%;
+  }
+  to {
+    top: 0%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .feature {
+    grid-template-columns: 1fr;
+  }
+
+  .catGrid {
+    width: 60vw;
+    height: 60vw;
+  }
+}
