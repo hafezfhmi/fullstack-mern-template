@@ -89,6 +89,7 @@
   height: 25vw;
   justify-self: center;
   position: relative;
+  overflow: hidden;
 }
 
 .catUpload > button {
@@ -96,7 +97,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: none;
+  animation-name: buttonPress;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+  /* display: none; */
 }
 
 .catImageContainer {
@@ -106,7 +110,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: none;
+  /* display: none; */
+  /* background-color: red; */
 }
 
 .catImageContainer > img {
@@ -118,14 +123,23 @@
 
 .catImageContainer > img:nth-child(1) {
   top: 40%;
+  animation-name: uploading-img-1;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
 }
 
 .catImageContainer > img:nth-child(2) {
   top: 50%;
+  animation-name: uploading-img-2;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
 }
 
 .catImageContainer > img:nth-child(3) {
   top: 60%;
+  animation-name: uploading-img-3;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
 }
 
 .catUploaded {
@@ -145,6 +159,101 @@
 
 .completed {
   margin-right: 0.2rem;
+}
+
+@keyframes buttonPress {
+  0% {
+    top: 50%;
+  }
+  19% {
+    opacity: 100%;
+  }
+  20%,
+  100% {
+    opacity: 0;
+    top: 53%;
+  }
+}
+
+@keyframes uploading-img-1 {
+  0%,
+  20% {
+    opacity: 0;
+    top: 115%;
+  }
+  21% {
+    opacity: 1;
+  }
+  22% {
+    top: 115%;
+  }
+  69% {
+    opacity: 100%;
+    top: 40%;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes uploading-img-2 {
+  0%,
+  20% {
+    opacity: 0;
+    top: 115%;
+  }
+  21% {
+    opacity: 1;
+  }
+  32% {
+    top: 115%;
+  }
+  69% {
+    opacity: 100%;
+    top: 50%;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes uploading-img-3 {
+  0%,
+  20% {
+    opacity: 0;
+    top: 115%;
+  }
+  21% {
+    opacity: 1;
+  }
+  42% {
+    top: 115%;
+  }
+  69% {
+    opacity: 100%;
+    top: 60%;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes uploaded {
+  from {
+    top: 0%;
+  }
+  to {
+    top: -60%;
+  }
 }
 
 @media only screen and (max-width: 900px) {
