@@ -1,7 +1,12 @@
 import React from "react";
 import Button from "../Button";
+import { AiFillStar } from "react-icons/ai";
+import { MdVerified } from "react-icons/md";
+import { FcLike } from "react-icons/fc";
 import styles from "./hero.module.css";
 import cameraImg from "../../assets/camera.gif";
+import catHeroImg from "../../assets/cat-hero.png";
+import person1 from "../../assets/person-1.jpg";
 
 const Hero = () => {
   return (
@@ -33,7 +38,35 @@ const Hero = () => {
       </div>
 
       {/* Hero image */}
-      <div></div>
+      <div className={styles.heroImg}>
+        <div className={styles.heroImgBg}>
+          <img src={catHeroImg} alt="" />
+          <div className={styles.heroReview}>
+            <div className={styles.heroReviewProfile}>
+              <img src={person1} alt="" />
+              <div className={styles.heroReviewUser}>
+                <p>John Doe</p>
+                <div className={styles.heroReviewRating}>
+                  <AiFillStar />
+                  <AiFillStar />
+                  <AiFillStar />
+                  <AiFillStar />
+                  <AiFillStar />
+                </div>
+              </div>
+            </div>
+            <p>"The best place to find cat photos"</p>
+          </div>
+          <div className={styles.heroBest}>
+            <p>
+              <MdVerified className={styles.verified} /> Best cat photos!
+            </p>
+            <div className={styles.likesContainer}>
+              <FcLike className={styles.likes} />
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   );
 };
