@@ -4,6 +4,7 @@
   top: 0;
   background-color: rgba(255, 255, 255, 0.797);
   backdrop-filter: blur(10px);
+  z-index: 100;
 }
 
 .scrolled {
