@@ -1,4 +1,5 @@
 import React from "react";
+import { MdVerified } from "react-icons/md";
 import styles from "./features.module.css";
 import catFeature1 from "../../assets/cat-hero.png";
 import cat1 from "../../assets/cat1.jpg";
@@ -16,6 +17,7 @@ import cat12 from "../../assets/cat12.jpg";
 import cat13 from "../../assets/cat13.jpg";
 import cat14 from "../../assets/cat14.jpg";
 import cat15 from "../../assets/cat15.jpg";
+import Button from "../Button";
 
 const Features = () => {
   return (
@@ -58,11 +60,22 @@ const Features = () => {
       </div>
 
       <div className={styles.feature}>
-        <img src={catFeature1} alt="" />
+        <div className={styles.catUpload}>
+          <Button label="Upload" />
+          <div className={styles.catImageContainer}>
+            <img src={cat1} alt="" />
+            <img src={cat2} alt="" />
+            <img src={cat3} alt="" />
+          </div>
+          <div className={styles.catUploaded}>
+            <MdVerified className={styles.completed} />
+            <p>Completed</p>
+          </div>
+        </div>
         <div className={styles.featureTextContainer}>
           <h3>Upload</h3>
           <h2>Share the moment of your cats</h2>
-          <p>Upload your cat photos to be seen by other users</p>
+          <p>Upload your cat photos to be seen by others</p>
         </div>
       </div>
 
