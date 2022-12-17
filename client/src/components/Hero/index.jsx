@@ -10,7 +10,7 @@ import person1 from "../../assets/person-1.jpg";
 
 const Hero = () => {
   return (
-    <main className={styles.hero}>
+    <main className={styles.hero + " section"}>
       {/* Hero headline */}
       <div className={styles.heroHeadline}>
         <h1>

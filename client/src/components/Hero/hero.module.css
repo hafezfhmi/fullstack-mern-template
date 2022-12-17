@@ -1,7 +1,6 @@
 .hero {
   display: grid;
   grid-template-columns: 1.5fr 2fr;
-  padding: 2rem 0;
 }
 
 .heroHeadline {
@@ -62,7 +61,7 @@
   height: 20rem;
   position: absolute;
   right: 0;
-  top: 12rem;
+  top: 14rem;
 }
 
 .heroImgBg > img {
@@ -176,6 +175,7 @@
 @media only screen and (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
+    padding-top: 0;
   }
 
   .heroImg {
