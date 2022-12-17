@@ -179,7 +179,9 @@
   background-color: #fff;
   box-shadow: rgb(50 50 93 / 25%) 0px 0px 12px -2px,
     rgb(0 0 0 / 30%) 0px 3px 7px -3px;
-  display: none;
+  animation-name: uploaded;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
 }
 
 .completed {
@@ -312,11 +314,17 @@
 }
 
 @keyframes uploaded {
-  from {
-    top: 0%;
+  0%,
+  81.25% {
+    opacity: 0;
   }
-  to {
-    top: -60%;
+  81.26%,
+  93.75% {
+    opacity: 100%;
+  }
+  93.76%,
+  100% {
+    opacity: 0%;
   }
 }
 
