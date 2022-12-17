@@ -100,6 +100,7 @@
   animation-name: buttonPress;
   animation-duration: 15s;
   animation-iteration-count: infinite;
+  /* display: none; */
 }
 
 .catImageContainer {
@@ -121,16 +122,47 @@
   animation-name: uploading-img-1;
   animation-duration: 15s;
   animation-iteration-count: infinite;
+  /* display: none; */
 }
 
 .catImageContainer > img:nth-child(2) {
   animation-name: uploading-img-2;
   animation-duration: 15s;
   animation-iteration-count: infinite;
+  /* display: none; */
 }
 
 .catImageContainer > img:nth-child(3) {
   animation-name: uploading-img-3;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+  /* display: none; */
+}
+
+.uploadIndicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 1rem;
+  width: 60%;
+  border-radius: 25px;
+  background-color: #fff;
+  overflow: hidden;
+  border: 1px solid rgb(185, 185, 185);
+  animation-name: uploadIndicator;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+}
+
+.uploadIndicator > span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgb(39, 123, 234);
+  height: 100%;
+  width: 50%;
+  animation-name: uploadIndicatorProgress;
   animation-duration: 15s;
   animation-iteration-count: infinite;
 }
@@ -158,12 +190,14 @@
   0% {
     top: 50%;
     opacity: 100%;
+    background-color: rgb(39, 123, 234);
   }
-  18.75% {
+  18.74% {
     top: 53%;
     opacity: 100%;
+    background-color: rgb(32, 104, 199);
   }
-  18.76%,
+  18.75%,
   100% {
     opacity: 0;
   }
@@ -181,12 +215,12 @@
     top: 100%;
   }
   31.25%,
-  62.5% {
+  62.49% {
     opacity: 100%;
     top: 40%;
     transform: translate(-50%, -50%);
   }
-  62.6%,
+  62.50%,
   100% {
     opacity: 0;
   }
@@ -205,12 +239,12 @@
     top: 100%;
   }
   43.75%,
-  62.5% {
+  62.49% {
     opacity: 100%;
     top: 50%;
     transform: translate(-50%, -50%);
   }
-  62.6%,
+  62.50%,
   100% {
     opacity: 0;
   }
@@ -224,16 +258,54 @@
     transform: translate(-50%, 0%);
   }
   43.76% {
-    opacity: 1;
+    opacity: 100%;
     top: 100%;
   }
   56.25%,
-  62.5% {
+  62.49% {
     opacity: 100%;
     top: 60%;
     transform: translate(-50%, -50%);
   }
-  62.6%,
+  62.50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes uploadIndicator {
+  0%,
+  62.50% {
+    opacity: 0;
+  }
+  62.51% {
+    opacity: 100%;
+  }
+  75.00%,
+  81.24% {
+    opacity: 100%;
+  }
+  81.25%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes uploadIndicatorProgress {
+  0%,
+  62.50% {
+    opacity: 0;
+    width: 0%;
+  }
+  62.51% {
+    opacity: 100%;
+  }
+  75.00%,
+  81.24% {
+    opacity: 100%;
+    width: 100%;
+  }
+  81.25%,
   100% {
     opacity: 0;
   }

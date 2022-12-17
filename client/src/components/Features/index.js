@@ -67,6 +67,9 @@ const Features = () => {
             <img src={cat2} alt="" />
             <img src={cat3} alt="" />
           </div>
+          <div className={styles.uploadIndicator}>
+            <span></span>
+          </div>
           <div className={styles.catUploaded}>
             <MdVerified className={styles.completed} />
             <p>Completed</p>
