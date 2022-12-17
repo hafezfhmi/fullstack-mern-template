@@ -7,7 +7,11 @@
   grid-template-columns: 1fr 1fr;
   align-items: center;
   grid-gap: 2rem;
-  margin: 4rem 0;
+  margin-bottom: 4rem;
+}
+
+.feature:last-child {
+  margin-bottom: 0;
 }
 
 .featureTextContainer > h3 {
@@ -448,6 +452,7 @@
 @media only screen and (max-width: 900px) {
   .feature {
     grid-template-columns: 1fr;
+    margin-bottom: 6rem;
   }
 
   .catGrid {
