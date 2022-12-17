@@ -18,21 +18,21 @@ const testimonialList = [
     testimonial:
       '"I stumbled upon this website while searching for cat-themed gifts for a friend and I\'m so glad I did. Highly recommend!"',
   },
-  {
-    username: "Jane M.",
-    testimonial:
-      '"The photographers do such a great job capturing the beauty and personality of each feline."',
-  },
-  {
-    username: "Maria G.",
-    testimonial:
-      '"I am in love with the cat photos on this website! The quality is excellent and the subjects are so adorable."',
-  },
-  {
-    username: "Elizabeth W.",
-    testimonial:
-      '"I recently discovered this cat gallery and I am hooked! Thank you for such a wonderful experience."',
-  },
+  //   {
+  //     username: "Jane M.",
+  //     testimonial:
+  //       '"The photographers do such a great job capturing the beauty and personality of each feline."',
+  //   },
+  //   {
+  //     username: "Maria G.",
+  //     testimonial:
+  //       '"I am in love with the cat photos on this website! The quality is excellent and the subjects are so adorable."',
+  //   },
+  //   {
+  //     username: "Elizabeth W.",
+  //     testimonial:
+  //       '"I recently discovered this cat gallery and I am hooked! Thank you for such a wonderful experience."',
+  //   },
 ];
 
 const Testominial = () => {
