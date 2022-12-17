@@ -1,7 +1,6 @@
 import React from "react";
 import { MdVerified } from "react-icons/md";
 import styles from "./features.module.css";
-import catFeature1 from "../../assets/cat-hero.png";
 import cat1 from "../../assets/cat1.jpg";
 import cat2 from "../../assets/cat2.jpg";
 import cat3 from "../../assets/cat3.jpg";
