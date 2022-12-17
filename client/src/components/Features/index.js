@@ -17,6 +17,7 @@ import cat12 from "../../assets/cat12.jpg";
 import cat13 from "../../assets/cat13.jpg";
 import cat14 from "../../assets/cat14.jpg";
 import cat15 from "../../assets/cat15.jpg";
+import catHead from "../../assets/cat-head.svg";
 import Button from "../Button";
 
 const Features = () => {
@@ -83,7 +84,19 @@ const Features = () => {
       </div>
 
       <div className={styles.feature}>
-        <img src={catFeature1} alt="" />
+        <div className={styles.catConnect}>
+          <img src={catHead} alt="" />
+          <img src={catHead} alt="" />
+          <img src={catHead} alt="" />
+          <img src={catHead} alt="" />
+          <div className={styles.catCenter}>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <img src={catHead} alt="" />
+          </div>
+        </div>
         <div className={styles.featureTextContainer}>
           <h3>Connect</h3>
           <h2>Make friends with other cat lovers</h2>

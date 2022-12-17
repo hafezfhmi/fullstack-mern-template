@@ -10,11 +10,6 @@
   margin: 4rem 0;
 }
 
-/* Form image *might not need later and make justify self for each div element */
-.feature > img {
-  justify-self: center;
-}
-
 .featureTextContainer > h3 {
   color: rgb(39, 123, 234);
   font-weight: 600;
@@ -205,6 +200,90 @@
   }
 }
 
+.catConnect {
+  position: relative;
+  width: 25vw;
+  height: 25vw;
+  justify-self: center;
+}
+
+.catCenter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.catConnect img {
+  width: 6vw;
+}
+
+.catConnect > img {
+  position: absolute;
+  animation-name: catHeadAppear;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+}
+
+.catConnect > img:nth-child(1) {
+  top: 0;
+  left: 0;
+}
+
+.catConnect > img:nth-child(2) {
+  top: 0;
+  right: 0;
+}
+
+.catConnect > img:nth-child(3) {
+  bottom: 0;
+  left: 0;
+}
+
+.catConnect > img:nth-child(4) {
+  bottom: 0;
+  right: 0;
+}
+
+.catCenter > span {
+  background-color: rgb(39, 123, 234);
+  position: absolute;
+  width: 5.5vw;
+  height: 4px;
+  border-radius: 25px;
+  animation-name: stickFill;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+}
+
+.catCenter > span:nth-child(1) {
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+  transform: rotate(225deg);
+}
+
+.catCenter > span:nth-child(2) {
+  top: 0;
+  right: 0;
+  transform-origin: top right;
+  transform: rotate(135deg);
+}
+
+.catCenter > span:nth-child(3) {
+  bottom: 0;
+  left: 0;
+  transform-origin: bottom left;
+  transform: rotate(135deg);
+}
+
+.catCenter > span:nth-child(4) {
+  bottom: 0;
+  right: 0;
+  transform-origin: bottom right;
+  transform: rotate(225deg);
+}
+
 @keyframes uploading-img-1 {
   0%,
   18.75% {
@@ -328,6 +407,44 @@
   }
 }
 
+@keyframes catHeadAppear {
+  0%,
+  10.00% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  10.01% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  50.00%,
+  100.00% {
+    transform: scale(1);
+  }
+}
+
+@keyframes stickFill {
+  0%,
+  50.01% {
+    width: 0;
+  }
+  90.00%,
+  100.00% {
+    width: 5.5vw;
+  }
+}
+
+@keyframes stickFillMB {
+  0%,
+  50.01% {
+    width: 0;
+  }
+  90.00%,
+  100.00% {
+    width: 10vw;
+  }
+}
+
 @media only screen and (max-width: 900px) {
   .feature {
     grid-template-columns: 1fr;
@@ -341,5 +458,23 @@
   .catUpload {
     width: 60vw;
     height: 60vw;
+  }
+
+  .catConnect {
+    width: 60vw;
+    height: 60vw;
+  }
+
+  .catConnect img {
+    width: 16vw;
+  }
+
+  .catCenter > span {
+    background-color: rgb(39, 123, 234);
+    position: absolute;
+    width: 10vw;
+    height: 3px;
+    border-radius: 25px;
+    animation-name: stickFillMB;
   }
 }
