@@ -8,8 +8,8 @@ const LastCTA = () => {
       <h2>Be a part of the cat gallery now!</h2>
 
       <Button
-        to="login"
-        label="Get started"
+        to="signup"
+        label="Sign up"
         style={{ display: "block", margin: "0 auto" }}
       />
     </div>

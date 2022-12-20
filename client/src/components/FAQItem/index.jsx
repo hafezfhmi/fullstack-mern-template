@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AiFillCaretDown } from "react-icons/ai";
 import styles from "./faqItem.module.css";
 
 const FAQItem = ({ question, answer }) => {
@@ -12,6 +13,9 @@ const FAQItem = ({ question, answer }) => {
     <div className={styles.faqItem}>
       <h3 onClick={handleShow} className={show && styles.active}>
         {question}
+        <AiFillCaretDown
+          className={styles.caretDown + " " + (show && styles.active)}
+        />
       </h3>
       <div className={styles.answer + " " + (show && styles.active)}>
         <p>{answer}</p>

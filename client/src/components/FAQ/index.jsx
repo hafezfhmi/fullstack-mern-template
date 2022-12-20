@@ -30,8 +30,8 @@ const FAQ = () => {
     <div className={styles.faq + " section"}>
       <h2>Frequently Asked Questions</h2>
       <div>
-        {faqList.map((faq) => (
-          <FAQItem question={faq.question} answer={faq.answer} />
+        {faqList.map((faq, index) => (
+          <FAQItem question={faq.question} answer={faq.answer} key={index} />
         ))}
       </div>
     </div>
