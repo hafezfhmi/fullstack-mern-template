@@ -8,8 +8,8 @@ const TestimonialSlider = () => {
   const positionXUpdater = () => {
     if (window.innerWidth > 900 && positionXValue !== 35) {
       setPositionXValue(35);
-    } else if (window.innerWidth <= 900 && positionXValue !== 100) {
-      setPositionXValue(100);
+    } else if (window.innerWidth <= 900 && positionXValue !== 105) {
+      setPositionXValue(105);
     }
   };
 
@@ -80,6 +80,13 @@ const TestimonialSlider = () => {
           style={{
             backgroundColor: "green",
             width: "340px",
+            height: "340px",
+            flex: "0 0 30%",
+          }}
+        ></div>
+        <div
+          style={{
+            backgroundColor: "blue",
             height: "340px",
             flex: "0 0 30%",
           }}
