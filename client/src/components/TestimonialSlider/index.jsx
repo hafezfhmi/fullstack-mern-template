@@ -61,7 +61,13 @@ const TestimonialSlider = () => {
 
   const handleMoveRight = () => {
     setPositionXMultiplier((prevPositionXMultiplier) => {
-      if (positionXMultiplier === -2) return -2;
+      if (positionXValue === 35) {
+        let moveRange = 0 - testimonialList.length / 2;
+        if (positionXMultiplier <= moveRange) return moveRange;
+      } else if (positionXValue === 105) {
+        let moveRange = 0 - testimonialList.length + 1;
+        if (positionXMultiplier <= moveRange) return moveRange;
+      }
       return positionXMultiplier - 1;
     });
   };
