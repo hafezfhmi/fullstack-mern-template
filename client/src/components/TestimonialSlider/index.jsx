@@ -9,7 +9,7 @@ const TestimonialSlider = () => {
     const positionXUpdater = () => {
       if (window.innerWidth > 900 && positionXValue !== 35) {
         setPositionXValue(35);
-      } else if (window.innerWidth < 900 && positionXValue !== 100) {
+      } else if (window.innerWidth <= 900 && positionXValue !== 100) {
         setPositionXValue(100);
       }
     };
@@ -19,8 +19,7 @@ const TestimonialSlider = () => {
     window.addEventListener("resize", () => {
       positionXUpdater();
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [positionXValue]);
 
   const handleMoveRight = () => {
     setPositionXMultiplier((prevPositionXMultiplier) => {
