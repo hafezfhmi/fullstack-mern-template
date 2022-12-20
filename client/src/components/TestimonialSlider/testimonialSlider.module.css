@@ -1,4 +1,7 @@
 .testimonialContainer {
+  position: relative;
+  left: -2rem;
+  padding: 2rem;
   width: 100%;
   overflow: hidden;
 }
@@ -52,6 +55,10 @@
 }
 
 @media only screen and (max-width: 900px) {
+  .testimonialSlider {
+    column-gap: 10%;
+  }
+
   .testimonialCard {
     flex: 0 0 100%;
   }

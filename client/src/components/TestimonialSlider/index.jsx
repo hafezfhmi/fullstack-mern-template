@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import styles from "./testimonialSlider.module.css";
 import userPhoto from "../../assets/person-1.jpg";
 
@@ -46,8 +47,8 @@ const TestimonialSlider = () => {
     if (window.innerWidth > 900 && positionXValue !== 35) {
       setPositionXValue(35);
       if (positionXMultiplier <= moveRange) setPositionXMultiplier(moveRange);
-    } else if (window.innerWidth <= 900 && positionXValue !== 105) {
-      setPositionXValue(105);
+    } else if (window.innerWidth <= 900 && positionXValue !== 110) {
+      setPositionXValue(110);
     }
   };
 
@@ -67,7 +68,7 @@ const TestimonialSlider = () => {
     setPositionXMultiplier((prevPositionXMultiplier) => {
       if (positionXValue === 35) {
         if (positionXMultiplier <= moveRange) return moveRange;
-      } else if (positionXValue === 105) {
+      } else if (positionXValue === 110) {
         if (positionXMultiplier <= moveRangeMb) return moveRangeMb;
       }
       return positionXMultiplier - 1;
