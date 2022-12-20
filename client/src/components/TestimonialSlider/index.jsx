@@ -16,9 +16,11 @@ const TestimonialSlider = () => {
 
     positionXUpdater();
 
-    window.addEventListener("resize", () => {
-      positionXUpdater();
-    });
+    window.addEventListener("resize", positionXUpdater);
+
+    return () => {
+      window.removeEventListener("resize", positionXUpdater);
+    };
   }, [positionXValue]);
 
   const handleMoveRight = () => {
