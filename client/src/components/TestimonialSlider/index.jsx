@@ -1,5 +1,39 @@
 import React, { useState, useEffect } from "react";
 import styles from "./testimonialSlider.module.css";
+import userPhoto from "../../assets/person-1.jpg";
+
+const testimonialList = [
+  {
+    username: "Sarah K.",
+    testimonial:
+      '"I absolutely adore the cat photos on this website! The quality is outstanding and the subjects are so cute and full of personality."',
+  },
+  {
+    username: "John D.",
+    testimonial:
+      '"As a cat lover, I was thrilled to discover this website. The variety of cat breeds and poses is impressive and the images are stunning."',
+  },
+  {
+    username: "Emily S.",
+    testimonial:
+      '"I stumbled upon this website while searching for cat-themed gifts for a friend and I\'m so glad I did. Highly recommend!"',
+  },
+  {
+    username: "Jane M.",
+    testimonial:
+      '"The photographers do such a great job capturing the beauty and personality of each feline."',
+  },
+  {
+    username: "Maria G.",
+    testimonial:
+      '"I am in love with the cat photos on this website! The quality is excellent and the subjects are so adorable."',
+  },
+  {
+    username: "Elizabeth W.",
+    testimonial:
+      '"I recently discovered this cat gallery and I am hooked! Thank you for such a wonderful experience."',
+  },
+];
 
 const TestimonialSlider = () => {
   const [positionXMultiplier, setPositionXMultiplier] = useState(0);
@@ -40,57 +74,22 @@ const TestimonialSlider = () => {
   };
 
   return (
-    <div className={styles.testimonialContainer}>
+    <div className={styles.testimonialContainer + " section"}>
       <button onClick={handleMoveLeft}>testLeft</button>
       <button onClick={handleMoveRight}>testRight</button>
       <div
         className={styles.testimonialSlider}
         style={{ left: `${positionXValue * positionXMultiplier}%` }}
       >
-        <div
-          style={{
-            backgroundColor: "red",
-            width: "340px",
-            height: "340px",
-            flex: "0 0 30%",
-          }}
-        ></div>
-        <div
-          style={{
-            backgroundColor: "green",
-            height: "340px",
-            flex: "0 0 30%",
-          }}
-        ></div>
-        <div
-          style={{
-            backgroundColor: "blue",
-            height: "340px",
-            flex: "0 0 30%",
-          }}
-        ></div>
-        <div
-          style={{
-            backgroundColor: "red",
-            height: "340px",
-            flex: "0 0 30%",
-          }}
-        ></div>
-        <div
-          style={{
-            backgroundColor: "green",
-            width: "340px",
-            height: "340px",
-            flex: "0 0 30%",
-          }}
-        ></div>
-        <div
-          style={{
-            backgroundColor: "blue",
-            height: "340px",
-            flex: "0 0 30%",
-          }}
-        ></div>
+        {testimonialList.map((testimonial, index) => (
+          <div className={styles.testimonialCard} key={index}>
+            <p>{testimonial.testimonial}</p>
+            <div className={styles.testomonialUser}>
+              <img src={userPhoto} alt="" />
+              <p>{testimonial.username}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
