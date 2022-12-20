@@ -39,9 +39,12 @@ const TestimonialSlider = () => {
   const [positionXMultiplier, setPositionXMultiplier] = useState(0);
   const [positionXValue, setPositionXValue] = useState(35);
 
+  const moveRange = 0 - Math.ceil(testimonialList.length / 2);
+
   const positionXUpdater = () => {
     if (window.innerWidth > 900 && positionXValue !== 35) {
       setPositionXValue(35);
+      if (positionXMultiplier <= moveRange) setPositionXMultiplier(moveRange);
     } else if (window.innerWidth <= 900 && positionXValue !== 105) {
       setPositionXValue(105);
     }
