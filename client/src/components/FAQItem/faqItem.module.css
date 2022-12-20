@@ -1,0 +1,39 @@
+.faqItem {
+  margin-bottom: 1rem;
+}
+
+.faqItem:last-child {
+  margin-bottom: 0;
+}
+
+.faqItem > h3 {
+  padding: 1.2rem 2rem;
+  border-radius: 0.6rem;
+
+  border: 1px solid rgb(185, 185, 185);
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.active {
+  color: #fff;
+  background-color: rgb(39, 123, 234);
+}
+
+.answer {
+  box-sizing: border-box;
+  height: 0;
+  overflow: hidden;
+  width: 95%;
+  background-color: #caddf6;
+  padding: 0 2rem;
+
+  border-radius: 0 0 0.6rem 0.6rem;
+  margin: 0 auto;
+  transition-duration: 0.1s;
+}
+
+.show {
+  height: auto;
+  padding: 1.2rem 2rem;
+}
