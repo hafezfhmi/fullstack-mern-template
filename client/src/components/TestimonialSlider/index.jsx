@@ -5,23 +5,25 @@ const TestimonialSlider = () => {
   const [positionXMultiplier, setPositionXMultiplier] = useState(0);
   const [positionXValue, setPositionXValue] = useState(35);
 
+  const positionXUpdater = () => {
+    if (window.innerWidth > 900 && positionXValue !== 35) {
+      setPositionXValue(35);
+    } else if (window.innerWidth <= 900 && positionXValue !== 100) {
+      setPositionXValue(100);
+    }
+  };
+
+  positionXUpdater();
+
+  // Updating value based on viewport size
+  // https://stackoverflow.com/questions/46586165/react-conditionally-render-based-on-viewport-size
   useEffect(() => {
-    const positionXUpdater = () => {
-      if (window.innerWidth > 900 && positionXValue !== 35) {
-        setPositionXValue(35);
-      } else if (window.innerWidth <= 900 && positionXValue !== 100) {
-        setPositionXValue(100);
-      }
-    };
-
-    positionXUpdater();
-
     window.addEventListener("resize", positionXUpdater);
 
     return () => {
       window.removeEventListener("resize", positionXUpdater);
     };
-  }, [positionXValue]);
+  });
 
   const handleMoveRight = () => {
     setPositionXMultiplier((prevPositionXMultiplier) => {
