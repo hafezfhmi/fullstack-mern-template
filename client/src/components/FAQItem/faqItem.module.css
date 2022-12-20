@@ -15,7 +15,7 @@
   transition: 0.1s;
 }
 
-.active {
+.faqItem.active > h3 {
   color: #fff;
   background-color: rgb(39, 123, 234);
 }
@@ -33,7 +33,7 @@
   transition-duration: 0.1s;
 }
 
-.show {
+.answer.active {
   height: auto;
   padding: 1.2rem 2rem;
 }

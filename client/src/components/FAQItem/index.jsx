@@ -13,7 +13,7 @@ const FAQItem = ({ question, answer }) => {
       <h3 onClick={handleShow} className={show && styles.active}>
         {question}
       </h3>
-      <div className={styles.answer + " " + (show && styles.show)}>
+      <div className={styles.answer + " " + (show && styles.active)}>
         <p>{answer}</p>
       </div>
     </div>

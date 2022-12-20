@@ -18,6 +18,11 @@ const faqList = [
     answer:
       "Yes, you are welcome to download and use the photos from our gallery for your own personal use. However, please be sure to credit the photographer and the gallery when sharing the photos.",
   },
+  {
+    question: "How do I contact the photographers featured in the gallery?",
+    answer:
+      "If you would like to contact a specific photographer featured in the gallery, please visit their individual profile page and connect with them.",
+  },
 ];
 
 const FAQ = () => {
