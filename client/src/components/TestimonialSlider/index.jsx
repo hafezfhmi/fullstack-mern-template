@@ -84,8 +84,6 @@ const TestimonialSlider = () => {
 
   return (
     <div className={styles.testimonialContainer + " section"}>
-      <button onClick={handleMoveLeft}>testLeft</button>
-      <button onClick={handleMoveRight}>testRight</button>
       <div
         className={styles.testimonialSlider}
         style={{ left: `${positionXValue * positionXMultiplier}%` }}
@@ -99,6 +97,15 @@ const TestimonialSlider = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className={styles.buttonWrapper}>
+        <button onClick={handleMoveLeft}>
+          <AiFillCaretLeft />
+        </button>
+        <button onClick={handleMoveRight}>
+          <AiFillCaretRight />
+        </button>
       </div>
     </div>
   );
