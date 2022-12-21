@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import MobileNav from "../MobileNav";
 import Button from "../Button";
 import styles from "./navbar.module.css";
-import catLogo from "../../assets/cat-logo.gif";
+import catLogo from "../../assets/cat-head.webp";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -34,7 +34,7 @@ const Navbar = () => {
             <Link to={"/"}>Home</Link>
           </li>
           <li>
-            <Link to={"/"}>Gallery</Link>
+            <Link to={"/gallery"}>Gallery</Link>
           </li>
           <li>
             <Link to={"login"}>Log in</Link>

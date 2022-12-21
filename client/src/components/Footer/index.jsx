@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./footer.module.css";
-import catHead from "../../assets/cat-head.svg";
+import catHead from "../../assets/cat-head.webp";
 
 const Footer = () => {
   return (
@@ -20,15 +20,15 @@ const Footer = () => {
           <div className={styles.footerList}>
             <p>Navigation</p>
             <ul>
-              <li>Home</li>
-              <li>Gallery</li>
+              <Link to={"/"}>Home</Link>
+              <Link to={"gallery"}>Gallery</Link>
             </ul>
           </div>
           <div className={styles.footerList}>
             <p>Company</p>
             <ul>
-              <li>About</li>
-              <li>Terms and conditions</li>
+              <Link to={"/"}>About</Link>
+              <Link to={"/"}>Terms and conditions</Link>
             </ul>
           </div>
         </div>

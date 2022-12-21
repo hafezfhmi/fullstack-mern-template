@@ -4,7 +4,7 @@ import { AiFillStar } from "react-icons/ai";
 import { MdVerified } from "react-icons/md";
 import { FcLike } from "react-icons/fc";
 import styles from "./hero.module.css";
-import cameraImg from "../../assets/camera.gif";
+import cameraImg from "../../assets/camera.webp";
 import catHeroImg from "../../assets/cat-hero.png";
 import person1 from "../../assets/person-1.jpg";
 

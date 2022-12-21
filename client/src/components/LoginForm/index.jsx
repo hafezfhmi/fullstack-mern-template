@@ -51,7 +51,7 @@ const LoginForm = () => {
       await login(email.attributes.value, password.attributes.value);
       navigate("/");
     } catch (err) {
-      error.handleError(true, err.response.data.error);
+      error.handleError(true, err?.response?.data?.error || err.message);
     }
   };
 

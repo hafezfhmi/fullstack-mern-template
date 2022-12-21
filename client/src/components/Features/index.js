@@ -16,7 +16,7 @@ import cat12 from "../../assets/cat12.jpg";
 import cat13 from "../../assets/cat13.jpg";
 import cat14 from "../../assets/cat14.jpg";
 import cat15 from "../../assets/cat15.jpg";
-import catHead from "../../assets/cat-head.svg";
+import catHead from "../../assets/cat-head.webp";
 import Button from "../Button";
 
 const Features = () => {

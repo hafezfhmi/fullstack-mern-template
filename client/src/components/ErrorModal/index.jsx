@@ -3,7 +3,7 @@ import reactDom from "react-dom";
 import { AiOutlineClose } from "react-icons/ai";
 import styles from "./errorModal.module.css";
 
-import errorIcon from "../../assets/error.gif";
+import errorIcon from "../../assets/error.webp";
 
 const ErrorModal = ({ errorMsg, disableError }) => {
   const disableParentEvent = (e) => {
