@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { UseUserContext } from "../../context/userContext";
+import { CgProfile } from "react-icons/cg";
 
 import MobileNav from "../MobileNav";
 import Button from "../Button";
+import Popover from "../Popover";
 import styles from "./navbar.module.css";
 import catLogo from "../../assets/cat-head.webp";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const userCtx = UseUserContext();
 
   useEffect(() => {
     window.onscroll = () => {
@@ -18,6 +22,10 @@ const Navbar = () => {
       }
     };
   }, []);
+
+  const handleLogout = () => {
+    userCtx.logout();
+  };
 
   return (
     <nav className={styles.navbar + " " + (scrolled ? styles.scrolled : "")}>
@@ -36,10 +44,31 @@ const Navbar = () => {
           <li>
             <Link to={"/gallery"}>Gallery</Link>
           </li>
-          <li>
-            <Link to={"login"}>Log in</Link>
-          </li>
-          <Button to={"signup"} label="Sign up" />
+          {userCtx.isLoggedIn ? (
+            <Popover
+              trigger={
+                <li className={styles.navProfile}>
+                  <Link to={"/profile"}>
+                    <CgProfile />
+                  </Link>
+                </li>
+              }
+            >
+              <ul className={styles.navPopoverList}>
+                <li>
+                  <Link to={"/profile"}>Profile</Link>
+                </li>
+                <li onClick={handleLogout}>Log out</li>
+              </ul>
+            </Popover>
+          ) : (
+            <>
+              <li>
+                <Link to={"login"}>Log in</Link>
+              </li>
+              <Button to={"signup"} label="Sign up" />
+            </>
+          )}
         </ul>
 
         <MobileNav />

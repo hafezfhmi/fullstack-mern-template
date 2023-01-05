@@ -46,6 +46,25 @@
   font-weight: 500;
 }
 
+.navProfile > a {
+  display: flex;
+  align-items: center;
+}
+
+.navProfile > a > svg {
+  font-size: 1.6rem;
+  color: rgb(39, 123, 234);
+}
+
+.navPopoverList > li {
+  margin-bottom: 0.6rem;
+  cursor: pointer;
+}
+
+.navPopoverList > li:last-child {
+  margin-bottom: 0;
+}
+
 @media only screen and (max-width: 900px) {
   .nav {
     display: none;

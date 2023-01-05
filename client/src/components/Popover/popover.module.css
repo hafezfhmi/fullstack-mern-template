@@ -1,0 +1,34 @@
+.popoverContainer {
+  position: relative;
+}
+
+.popover {
+  visibility: hidden;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: rgb(50 50 93 / 25%) 0px 0px 12px -2px,
+    rgb(0 0 0 / 30%) 0px 3px 7px -3px;
+  border-radius: 0.6rem;
+  width: max-content;
+  padding: 1rem;
+}
+
+.popoverTop {
+  bottom: 100%;
+}
+
+.popoverBottom {
+  top: 100%;
+}
+
+.popoverLeft {
+  right: 0;
+}
+
+.popoverRight {
+  left: 0;
+}
+
+.popoverContainer:hover .popover {
+  visibility: visible;
+}
