@@ -16,10 +16,8 @@ export const UserContextProvider = (props) => {
     const fetchUserLoginStatus = async () => {
       const userLoginStatus = await authServices.relog();
 
-      if (userLoginStatus.isLoggedIn) {
-        setUser(userLoginStatus.user);
-        setIsLoggedIn(userLoginStatus.isLoggedIn);
-      }
+      setUser(userLoginStatus.user);
+      setIsLoggedIn(userLoginStatus.isLoggedIn);
     };
 
     fetchUserLoginStatus();
