@@ -9,12 +9,12 @@ const {
   getOneResetPassword,
   postNewPassword,
 } = require("../controllers/auth");
-const isAuth = require("../middleware/isAuth");
+const isAuth = require("../utils/isAuth");
 
 router.post("/login", postLogin);
 router.post("/logout", isAuth, postLogout);
 router.post("/signup", postSignup);
-router.get("/relog", getRelog);
+router.get("/relog", isAuth, getRelog);
 router.post("/resetPassword", postResetPassword);
 router.get("/resetPassword/:resetToken", getOneResetPassword);
 router.post("/resetPassword/:resetToken", postNewPassword);

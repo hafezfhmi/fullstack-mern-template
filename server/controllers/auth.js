@@ -3,8 +3,8 @@ const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 const { Op } = require("sequelize");
 
-const User = require("../models/users");
-const PasswordReset = require("../models/passwordResets");
+const User = require("../models/user");
+const PasswordReset = require("../models/passwordReset");
 
 // Setting up transporter using gmail: https://www.youtube.com/watch?v=thAP7Fvrql4
 // P.S. Using gmail is not recommended for production. Find other alternative for production.
@@ -28,12 +28,12 @@ exports.postLogin = async (req, res, next) => {
       dbUser == null ? false : await bcrypt.compare(password, dbUser.password);
 
     if (!passwordCorrect) {
-      return res.send(401, { error: "Invalid username or password" });
+      return res.status(400).json({ msg: "Invalid username or password" });
     }
 
     req.session.isLoggedIn = true;
     req.session.user = {
-      userId: dbUser.userId,
+      id: dbUser.id,
       username: dbUser.username,
       firstName: dbUser.firstName,
       lastName: dbUser.lastName,
@@ -48,6 +48,7 @@ exports.postLogin = async (req, res, next) => {
         email: dbUser.email,
       },
       isLoggedIn: true,
+      msg: "User login successfully",
     });
   } catch (error) {
     return next(error);
@@ -57,7 +58,7 @@ exports.postLogin = async (req, res, next) => {
 exports.postLogout = async (req, res, next) => {
   try {
     req.session.destroy(() => {
-      res.end();
+      res.status(200).json({ msg: "User logged out successfully" });
     });
   } catch (error) {
     next(error);
@@ -70,7 +71,7 @@ exports.postSignup = async (req, res, next) => {
 
   // Check password
   if (password !== confirmPassword) {
-    return res.status(401).json({ error: "Password doesn't match" });
+    return res.status(400).json({ msg: "Password doesn't match" });
   }
 
   try {
@@ -78,23 +79,22 @@ exports.postSignup = async (req, res, next) => {
     let foundUser = await User.findOne({ where: { email } });
     if (foundUser) {
       return res
-        .status(401)
-        .json({ error: "There's already a user with that email" });
+        .status(400)
+        .json({ msg: "There's already a user with that email" });
     }
 
     // Check if user is already in db via username
     foundUser = await User.findOne({ where: { username } });
     if (foundUser) {
       return res
-        .status(401)
-        .json({ error: "There's already a user with that username" });
+        .status(400)
+        .json({ msg: "There's already a user with that username" });
     }
 
     // Check if username is valid
     if (!/^[a-zA-Z0-9]+$/.test(username)) {
-      return res.status(401).json({
-        error:
-          "Invalid username. Username must contains only alphabetical characters and numbers",
+      return res.status(400).json({
+        msg: "Invalid username. Username must contains only alphabetical characters and numbers",
       });
     }
 
@@ -109,24 +109,17 @@ exports.postSignup = async (req, res, next) => {
       password: hashedPassword,
     });
 
-    return res.status(201).json({ success: "User created" });
+    return res.status(201).json({ msg: "User created successfully" });
   } catch (error) {
     return next(error);
   }
 };
 
-exports.getRelog = (req, res) => {
-  if (!req.session.isLoggedIn) {
-    return res.json({
-      data: "You aren't logged in. Please log in and try again.",
-      isLoggedIn: false,
-    });
-  }
-  return res.json({
+exports.getRelog = (req, res) =>
+  res.json({
     user: req.session.user,
     isLoggedIn: req.session.isLoggedIn,
   });
-};
 
 exports.postResetPassword = async (req, res, next) => {
   const { email } = req.body;
@@ -135,14 +128,14 @@ exports.postResetPassword = async (req, res, next) => {
     const user = await User.findOne({ where: { email } });
 
     if (!user) {
-      return res.status(404).json("User not found");
+      return res.status(404).json({ msg: "User not found" });
     }
 
     const hashBuffer = crypto.randomBytes(32);
     const token = hashBuffer.toString("hex");
 
     const resetToken = await PasswordReset.findOne({
-      where: { userId: user.userId },
+      where: { userId: user.id },
     });
 
     if (resetToken) {
@@ -153,7 +146,7 @@ exports.postResetPassword = async (req, res, next) => {
 
       if (resetTokenExpiryLeft > 0) {
         return res.status(400).json({
-          error: `You had requested a password reset earlier. Please try again in ${resetTokenExpiryLeft} minutes.`,
+          msg: `You had requested a password reset earlier. Please try again in ${resetTokenExpiryLeft} minutes.`,
         });
       }
       // Update token and return response
@@ -162,13 +155,13 @@ exports.postResetPassword = async (req, res, next) => {
           resetToken: token,
           expiry: Date.now() + 3600000,
         },
-        { where: { userId: user.userId } }
+        { where: { userId: user.id } }
       );
     } else {
       await PasswordReset.create({
         resetToken: token,
         expiry: Date.now() + 3600000,
-        userId: user.userId,
+        userId: user.id,
       });
     }
 
@@ -180,8 +173,8 @@ exports.postResetPassword = async (req, res, next) => {
     });
 
     return res
-      .status(201)
-      .json({ message: "Reset link has been sent to your email" });
+      .status(200)
+      .json({ msg: "Reset link has been sent to your email" });
   } catch (error) {
     return next(error);
   }
@@ -201,10 +194,10 @@ exports.getOneResetPassword = async (req, res, next) => {
     });
 
     if (!resetTokenDetails) {
-      return res.status(401).json({ error: "Invalid token" });
+      return res.status(400).json({ msg: "Invalid token" });
     }
 
-    return res.status(200).json({ success: "Token valid" });
+    return res.status(200).json({ msg: "Valid token" });
   } catch (error) {
     return next(error);
   }
@@ -225,12 +218,12 @@ exports.postNewPassword = async (req, res, next) => {
     });
 
     if (!resetTokenDetails) {
-      return res.status(401).json({ error: "Invalid token" });
+      return res.status(400).json({ msg: "Invalid token" });
     }
 
     // Check password
     if (password !== confirmPassword) {
-      return res.status(401).json({ error: "Password doesn't match" });
+      return res.status(400).json({ msg: "Password doesn't match" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 12);
@@ -242,7 +235,7 @@ exports.postNewPassword = async (req, res, next) => {
       },
       {
         where: {
-          userId: resetTokenDetails.userId,
+          id: resetTokenDetails.userId,
         },
       }
     );
@@ -253,7 +246,7 @@ exports.postNewPassword = async (req, res, next) => {
       },
     });
 
-    return res.status(201).json({ success: "Password updated" });
+    return res.status(200).json({ msg: "Password updated successfully" });
   } catch (error) {
     return next(error);
   }
