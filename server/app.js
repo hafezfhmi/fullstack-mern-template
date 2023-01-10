@@ -4,8 +4,8 @@ const session = require("express-session");
 const RedisStore = require("connect-redis")(session);
 const { createClient } = require("redis");
 
-const usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
+const imageRouter = require("./routes/image");
 
 const Image = require("./models/image");
 const User = require("./models/user");
@@ -31,8 +31,8 @@ app.use(
 );
 
 // Routes
-app.use("/api/user", usersRouter);
 app.use("/auth", authRouter);
+app.use("/image", imageRouter);
 
 // Associations/relationships
 // user 1:M image

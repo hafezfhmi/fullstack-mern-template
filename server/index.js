@@ -9,7 +9,7 @@ const PORT = 3001;
 
 const server = http.createServer(app);
 
-db.sync({ force: true }).then(() => {
+db.sync().then(() => {
   console.log("Database synced");
 
   server.listen(PORT, () => {
