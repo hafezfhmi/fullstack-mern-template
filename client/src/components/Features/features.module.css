@@ -1,3 +1,7 @@
+.features {
+  margin-bottom: 8rem;
+}
+
 .feature {
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -27,7 +27,7 @@ const faqList = [
 
 const FAQ = () => {
   return (
-    <div className={styles.faq + " section"}>
+    <div className={styles.faq}>
       <h2>Frequently Asked Questions</h2>
       <div>
         {faqList.map((faq, index) => (

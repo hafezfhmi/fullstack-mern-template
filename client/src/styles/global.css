@@ -13,14 +13,6 @@ body {
   margin: 0 auto;
 }
 
-.container {
-  padding: 0 2rem;
-}
-
-.section {
-  padding: 4rem 0;
-}
-
 @media only screen and (min-width: 1800px) {
   html {
     font-size: 118.75%; /* 19px */

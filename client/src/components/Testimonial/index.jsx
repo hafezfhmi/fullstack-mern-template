@@ -4,7 +4,7 @@ import styles from "./testimonial.module.css";
 
 const Testominial = () => {
   return (
-    <div className={styles.testimonial + " section"}>
+    <div className={styles.testimonial}>
       <h2>Pawsitive feedback from cat lovers everywhere</h2>
       <TestimonialSlider />
     </div>

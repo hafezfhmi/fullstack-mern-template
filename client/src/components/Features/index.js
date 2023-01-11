@@ -21,7 +21,7 @@ import Button from "../Button";
 
 const Features = () => {
   return (
-    <section className={styles.features + " section"}>
+    <section className={styles.features}>
       <div className={styles.feature}>
         <div className={styles.catGrid}>
           <div className={styles.catColumnWrapper}>

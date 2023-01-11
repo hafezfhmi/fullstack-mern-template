@@ -16,6 +16,7 @@ import Root from "./routes/Root";
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import Home from "./routes/Home";
+import Gallery from "./routes/Gallery";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
         <Route path="passwordReset/:tokenId" element={<PasswordReset />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
+        <Route path="gallery" element={<Gallery />} />
       </Route>
     </>
   )
