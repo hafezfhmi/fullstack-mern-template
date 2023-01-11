@@ -11,10 +11,21 @@
   row-gap: 0.8rem;
 }
 
-.galleryColumn img {
+.imageContainer {
+  overflow: hidden;
+  border-radius: 0.6rem;
+}
+
+.imageContainer img {
   width: 100%;
   object-fit: cover;
-  border-radius: 0.6rem;
+  transition: transform 0.5s;
+}
+
+@media (hover: hover) {
+  .imageContainer img:hover {
+    transform: scale(1.1);
+  }
 }
 
 @media screen and (max-width: 768px) {
