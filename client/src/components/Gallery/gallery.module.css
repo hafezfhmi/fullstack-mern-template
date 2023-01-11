@@ -16,3 +16,23 @@
   object-fit: cover;
   border-radius: 0.6rem;
 }
+
+@media screen and (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .fourthColumn {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .thirdColumn {
+    display: hidden;
+  }
+}

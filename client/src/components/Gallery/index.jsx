@@ -47,7 +47,7 @@ let imageList = [
     title: "Image 6",
     description: "A beautiful landscape",
     image_url:
-      "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492__340.jpg",
+      "https://images.pexels.com/photos/10188725/pexels-photo-10188725.jpeg",
     user_id: 123,
   },
   {
@@ -85,12 +85,31 @@ let imageList = [
 ];
 
 const Gallery = () => {
+  const [columnSize, setColumnSize] = useState(4);
   const [firstColumn, setFirstColumn] = useState([]);
   const [secondColumn, setSecondColumn] = useState([]);
   const [thirdColumn, setThirdColumn] = useState([]);
   const [fourthColumn, setFourthColumn] = useState([]);
 
-  let columnSize = 4;
+  const columnSizeUpdater = () => {
+    if (window.innerWidth <= 425) {
+      setColumnSize(2);
+    } else if (window.innerWidth <= 768) {
+      setColumnSize(3);
+    } else {
+      setColumnSize(4);
+    }
+  };
+
+  useEffect(() => {
+    columnSizeUpdater();
+
+    window.addEventListener("resize", columnSizeUpdater);
+
+    return () => {
+      window.removeEventListener("resize", columnSizeUpdater);
+    };
+  }, []);
 
   useEffect(() => {
     let firstColumnPlaceholder = [];
@@ -111,7 +130,10 @@ const Gallery = () => {
             firstColumnPlaceholder = [...firstColumnPlaceholder, imageList[i]];
             firstColumnFilled = true;
           } else if (secondColumnFilled === false) {
-            firstColumnPlaceholder = [...secondColumnPlaceholder, imageList[i]];
+            secondColumnPlaceholder = [
+              ...secondColumnPlaceholder,
+              imageList[i],
+            ];
             secondColumnFilled = true;
           }
         } else if (columnSize === 3) {
@@ -173,16 +195,7 @@ const Gallery = () => {
     };
 
     distributeImage();
-  }, []);
-
-  // useEffect(() => {
-  //   const redistributeImage = () => {
-  //     if (columnSize === 3) {
-  //       if (fourthColumn.length !== 0) {
-  //       }
-  //     }
-  //   };
-  // }, [columnSize]);
+  }, [columnSize]);
 
   return (
     <div className={styles.gallery}>
